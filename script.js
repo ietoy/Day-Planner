@@ -3,42 +3,52 @@
     // the current day, and time if I can swing it
 var currentDay = document.querySelector("#currentDay");
 
+var eventSpaceEl = document.querySelector("#eventSpace");
 
-// below is an example copied from stack overflow. Take what you need from here and port it over to the index.html as necessary
-var stackOverflowTemp = document.querySelector("#stackOverflowTemp");
-
-var objToday = new Date(),
-	weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
-	dayOfWeek = weekday[objToday.getDay()],
-	domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
-	dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
-	months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
-	curMonth = months[objToday.getMonth()],
-	curYear = objToday.getFullYear(),
-	curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours());
-    
-var today = dayOfWeek + ", " + curMonth + " " + dayOfMonth + ", " + curYear;
-
-// document.getElementsByTagName('h1')[0].textContent = today;
-
-currentDay.textContent = today;
-
-// below is what I need to glean from the above StackOverflow Example
+var todayInfo = new Date();
 var weekdayArr;
-weekdayArr = ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+weekdayArr = new Array ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
 var monthsArr;
-monthsArr = ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+monthsArr = new Array ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+var doWeek;
+doWeek = weekdayArr[todayInfo.getDay()]
+var dd;
+dd = todayInfo.getDate();
+var mm;
+mm = monthsArr[todayInfo.getMonth()];
 
-
-
+currentDay.textContent = doWeek + ", " + mm + " " + dd ;
 
 // display standard business hours from 9am to 5pm
+// to do this, I think i need to add a table element to the div with the class container
+var timeSlots;
+timeSlots = document.querySelector(".container");
+
+
+
+
+// var testElement;
+// testElement = $(<p></p>).text("This is a test of jQuery functions.");
+
+// $(".container").append(testElement);
+
+// $("<h1>").appendTo(".container");
+// $(".container").add("<p>").addClass("eventWindow");
+// $(".eventWindow").text("howdy-ho, kids!")
 
 // each time slot should represent one hour and contain
 
     // the time, on the far left
 
     // a field to hold user imput
+    
+    // The field to enter text will only appear when the user clicks on the space under "event"
+    // when the user presses save, it will store that input.value to that cell in the table
+    // HELP HELP HELP HELP HELP HELP HELP HELP HELP MEOW MEOW MEOW MEOW MEOW MEOW MEOW
+    $("#eventSpace").on("click", function() {
+      eventSpaceEl.remove(".d-none");
+    });
+
     
         // this background will change based on the time of day,
         
