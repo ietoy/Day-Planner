@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link rel="stylesheet" href="style.css"/>
     <title>Work Day Scheduler</title>
   </head>
 
   <body>
+    
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
@@ -22,35 +25,17 @@
       <p id="currentDay" class="lead font-weight-bold"></p>
     </header>
 
-    <div class="container">
+    <div id="time-slots" class="container">
       <!-- Timeblocks go here -->
-      <table class="table w-100">
-        <tr class="row">
-          <th class="col-2">Time</th>
-          <th class="col-10">Event</th>
-        </tr>
+            
 
-        <!-- test case -->
-        <tr class="row">
-          <td class="col-2">9am</td>
-          <td class="col-10">
-            <!-- this is where the event input will go -->
-            <span id="eventSpace" class="d-none">
 
-              <textarea placeholder="your event here"></textarea>
-              
-            </span>
-            <button class="float-right saveBtn">SAVE</button>
-          </td>
-        </tr>
-        <!-- end test case -->
-      
-      </table>
+
+
 
 
     </div>
     <script src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
   </body>
 </html>

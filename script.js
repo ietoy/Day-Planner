@@ -1,8 +1,5 @@
-// The top of the calendar will display
-
-    // the current day, and time if I can swing it
+// This displays the current date by getting the day of the week, the month, and the date of the month from the the window object
 var currentDay = document.querySelector("#currentDay");
-
 var eventSpaceEl = document.querySelector("#eventSpace");
 
 var todayInfo = new Date();
@@ -10,31 +7,91 @@ var weekdayArr;
 weekdayArr = new Array ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
 var monthsArr;
 monthsArr = new Array ('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-var doWeek;
-doWeek = weekdayArr[todayInfo.getDay()]
-var dd;
-dd = todayInfo.getDate();
-var mm;
-mm = monthsArr[todayInfo.getMonth()];
+var doWeek = weekdayArr[todayInfo.getDay()];
+var dd = todayInfo.getDate();
+var mm = monthsArr[todayInfo.getMonth()];
 
 currentDay.textContent = doWeek + ", " + mm + " " + dd ;
+// END DATE DISPLAY
+
+
+// TIMESLOT GENERATOR
+
+
+var times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
+
+function renderTimeSlots() {
+  for (var i = 0; i < times.length; i++) {
+    var timeSlot;
+    timeSlot = $("<tr>");
+    timeSlot.addClass("row");
+    timeSlot.attr("data-hour", times[i]);
+    $(".table").append(timeSlot);
+
+    var hour;
+    hour = $("<td>");
+    hour.addClass("col-2");
+    hour.text(times[i]);
+    timeSlot.append(hour);
+
+    var eventItem;
+    eventItem = $("<td>");
+    eventItem.addClass("col-10");
+    eventItem.text("");
+    timeSlot.append(eventItem)
+  };
+};
+
+
+
+function buildTable() {
+  var schedule;
+  schedule = $("<table>");
+  schedule.addClass("table")
+  $("#time-slots").append(schedule);
+
+  var tableHeaders;
+  tableHeaders = $("<tr>");
+  tableHeaders.addClass("row");
+  schedule.append(tableHeaders);
+
+  var toDay;
+  toDay = $("<th>");
+  toDay.addClass("col-2");
+  toDay.text("Time of Day");
+  tableHeaders.append(toDay);
+
+  var eventHead;
+  eventHead = $("<th>");
+  eventHead.addClass("col-10");
+  eventHead.text("Scheduled Event");
+  tableHeaders.append(eventHead);
+
+  renderTimeSlots();
+};
+
+buildTable();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// END TIMESLOT GENERATOR
+
+
+
+
 
 // display standard business hours from 9am to 5pm
-// to do this, I think i need to add a table element to the div with the class container
-var timeSlots;
-timeSlots = document.querySelector(".container");
-
-
-
-
-// var testElement;
-// testElement = $(<p></p>).text("This is a test of jQuery functions.");
-
-// $(".container").append(testElement);
-
-// $("<h1>").appendTo(".container");
-// $(".container").add("<p>").addClass("eventWindow");
-// $(".eventWindow").text("howdy-ho, kids!")
 
 // each time slot should represent one hour and contain
 
@@ -45,10 +102,6 @@ timeSlots = document.querySelector(".container");
     // The field to enter text will only appear when the user clicks on the space under "event"
     // when the user presses save, it will store that input.value to that cell in the table
     // HELP HELP HELP HELP HELP HELP HELP HELP HELP MEOW MEOW MEOW MEOW MEOW MEOW MEOW
-    $("#eventSpace").on("click", function() {
-      eventSpaceEl.remove(".d-none");
-    });
-
     
         // this background will change based on the time of day,
         
@@ -64,9 +117,5 @@ timeSlots = document.querySelector(".container");
     
         // clicking on this save button saves the user input to localStorage
 
-
-function saveEvent() {
-
-}
 
 
