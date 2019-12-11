@@ -17,7 +17,6 @@ currentDay.textContent = doWeek + ", " + mm + " " + dd ;
 
 // TIMESLOT GENERATOR
 var times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-
 // Globally Defined Variables 
 var timeSlot;
 var hour;
@@ -42,13 +41,15 @@ function renderTimeSlots() {
       eventItem.addClass("col-9");
       eventItem.addClass("input");
       eventItem.attr("id", times[i]);
-      //   var eventInput;
+      eventItem.text("");
+        //   var eventInput;
         eventInput = $("<textarea>");
         eventInput.addClass("w-100");
-        eventInput.addClass("d-none");
-      eventItem.text("");
-    timeSlot.append(eventItem);
+        eventInput.addClass("input");
+        // eventInput.addClass("d-none");
       eventItem.append(eventInput);
+
+    timeSlot.append(eventItem);
       // var saveBtn;
       saveBtn = $("<button>");
       saveBtn.addClass("saveBtn");
@@ -57,7 +58,6 @@ function renderTimeSlots() {
     timeSlot.append(saveBtn);
   };
 };
-
 
 function buildTable() {
   var schedule;
@@ -82,33 +82,8 @@ function buildTable() {
 };
 
 buildTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
 // END TIMESLOT GENERATOR
 
-
-
-
-
-// display standard business hours from 9am to 5pm
-
-// each time slot should represent one hour and contain
-
-    // the time, on the far left
-
-    // a field to hold user imput
-    
     // The field to enter text will only appear when the user clicks on the space under "event"
     // when the user presses save, it will store that input.value to that cell in the table
     // HELP HELP HELP HELP HELP HELP HELP HELP HELP MEOW MEOW MEOW MEOW MEOW MEOW MEOW
@@ -127,5 +102,7 @@ buildTable();
     
         // clicking on this save button saves the user input to localStorage
 
-
+function saveEvent() {
+  
+};
 
