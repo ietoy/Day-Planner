@@ -16,32 +16,47 @@ currentDay.textContent = doWeek + ", " + mm + " " + dd ;
 
 
 // TIMESLOT GENERATOR
+var times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
 
-
-var times = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
+// Globally Defined Variables 
+var timeSlot;
+var hour;
+var eventItem;
+var eventInput;
+var saveBtn;
 
 function renderTimeSlots() {
   for (var i = 0; i < times.length; i++) {
-    var timeSlot;
+    // var timeSlot;
     timeSlot = $("<tr>");
     timeSlot.addClass("row");
     timeSlot.attr("data-hour", times[i]);
     $(".table").append(timeSlot);
-
-    var hour;
-    hour = $("<td>");
-    hour.addClass("col-2");
-    hour.text(times[i]);
+      // var hour;
+      hour = $("<td>");
+      hour.addClass("col-2");
+      hour.text(times[i]);
     timeSlot.append(hour);
-
-    var eventItem;
-    eventItem = $("<td>");
-    eventItem.addClass("col-10");
-    eventItem.text("");
-    timeSlot.append(eventItem)
+      // var eventItem;
+      eventItem = $("<td>");
+      eventItem.addClass("col-9");
+      eventItem.addClass("input");
+      eventItem.attr("id", times[i]);
+      //   var eventInput;
+        eventInput = $("<textarea>");
+        eventInput.addClass("w-100");
+        eventInput.addClass("d-none");
+      eventItem.text("");
+    timeSlot.append(eventItem);
+      eventItem.append(eventInput);
+      // var saveBtn;
+      saveBtn = $("<button>");
+      saveBtn.addClass("saveBtn");
+      saveBtn.addClass("col-1");
+      saveBtn.text("SAVE")
+    timeSlot.append(saveBtn);
   };
 };
-
 
 
 function buildTable() {
@@ -49,29 +64,24 @@ function buildTable() {
   schedule = $("<table>");
   schedule.addClass("table")
   $("#time-slots").append(schedule);
-
   var tableHeaders;
   tableHeaders = $("<tr>");
   tableHeaders.addClass("row");
   schedule.append(tableHeaders);
-
   var toDay;
   toDay = $("<th>");
   toDay.addClass("col-2");
   toDay.text("Time of Day");
   tableHeaders.append(toDay);
-
   var eventHead;
   eventHead = $("<th>");
   eventHead.addClass("col-10");
   eventHead.text("Scheduled Event");
   tableHeaders.append(eventHead);
-
   renderTimeSlots();
 };
 
 buildTable();
-
 
 
 
